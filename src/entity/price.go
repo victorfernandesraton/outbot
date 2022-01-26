@@ -1,9 +1,11 @@
 package entity
 
-import "time"
+import (
+	"database/sql"
+)
 
 type Price struct {
 	Crypto     Crypto
 	Evaluation float64
-	Date       time.Time
+	Date       sql.NullTime
 }
