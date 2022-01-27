@@ -21,8 +21,8 @@ func (c *Crypto) ParseJSON() (string, error) {
 		dataStr = struct {
 			Name      string    `json:"name"`
 			Symbol    string    `json:"symbol"`
-			CreatedAt time.Time `json:"createdAt"`
-			Site      string    `json:"site"`
+			CreatedAt time.Time `json:"createdAt,omitempty"`
+			Site      string    `json:"site,omitempty"`
 		}{
 			Name:      c.Name,
 			Symbol:    c.Symbol,
