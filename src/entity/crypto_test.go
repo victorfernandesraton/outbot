@@ -2,6 +2,7 @@ package entity_test
 
 import (
 	"database/sql"
+	"encoding/json"
 	"testing"
 	"time"
 
@@ -18,11 +19,11 @@ func TestValidJSONParse(t *testing.T) {
 		},
 		Site: "www.eth.com",
 	}
-	result, err := data.ParseJSON()
+	result, err := json.Marshal(data)
 	if err != nil {
 		t.Errorf("Error in parse: %v", err.Error())
 	}
-	if result != string(`{"name":"Etherium","symbol":"ETH","createdAt":"2019-04-21T00:00:00Z","site":"www.eth.com"}`) {
+	if string(result) != string(`{"name":"Etherium","symbol":"ETH","createdAt":"2019-04-21T00:00:00Z","site":"www.eth.com"}`) {
 		t.Errorf("Invalid return %v", result)
 	}
 }
@@ -37,11 +38,12 @@ func TestWithNullDate(t *testing.T) {
 		},
 		Site: "www.eth.com",
 	}
-	result, err := data.ParseJSON()
+	result, err := json.Marshal(data)
+
 	if err != nil {
 		t.Errorf("Error in parse: %v", err.Error())
 	}
-	if result != string(`{"name":"Etherium","symbol":"ETH","site":"www.eth.com"}`) {
+	if string(result) != string(`{"name":"Etherium","symbol":"ETH","site":"www.eth.com"}`) {
 		t.Errorf("Invalid return %v", result)
 	}
 }
@@ -55,11 +57,11 @@ func TestWIthJSONNotHaveSite(t *testing.T) {
 			Valid: true,
 		},
 	}
-	res, err := data.ParseJSON()
+	res, err := json.Marshal(data)
 	if err != nil {
 		t.Errorf("Error in parse %v", err.Error())
 	}
-	if res != string(`{"name":"Etherium","symbol":"ETH","createdAt":"2019-04-21T00:00:00Z"}`) {
+	if string(res) != string(`{"name":"Etherium","symbol":"ETH","createdAt":"2019-04-21T00:00:00Z"}`) {
 		t.Errorf("Unexpected return, %v got %v", `{"name":"Etherium","symbol":"ETH","createdAt":"2019-04-21T00:00:00Z"}`, res)
 	}
 

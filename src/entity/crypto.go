@@ -15,7 +15,7 @@ type Crypto struct {
 	Site      string       `json:"site"`
 }
 
-func (c *Crypto) ParseJSON() (string, error) {
+func (c *Crypto) MarshalJSON() ([]byte, error) {
 	var dataStr interface{}
 	if c.CreatedAt.Valid {
 		dataStr = struct {
@@ -42,8 +42,8 @@ func (c *Crypto) ParseJSON() (string, error) {
 	}
 	data, err := json.Marshal(dataStr)
 	if err != nil {
-		return "", errors.New(fmt.Sprintf("JSON Error parse, %v", err.Error()))
+		return nil, errors.New(fmt.Sprintf("JSON Error parse, %v", err.Error()))
 	}
-	return string(data), nil
+	return data, nil
 
 }
