@@ -19,7 +19,7 @@ func (c *Crypto) MarshalJSON() ([]byte, error) {
 	var dataStr interface{}
 	if c.CreatedAt.Valid {
 		dataStr = struct {
-			Name      string    `json:"name"`
+			Name      string    `json:"name,omitempty"`
 			Symbol    string    `json:"symbol"`
 			CreatedAt time.Time `json:"createdAt,omitempty"`
 			Site      string    `json:"site,omitempty"`
@@ -31,9 +31,9 @@ func (c *Crypto) MarshalJSON() ([]byte, error) {
 		}
 	} else {
 		dataStr = struct {
-			Name   string `json:"name"`
+			Name   string `json:"name,omitempty"`
 			Symbol string `json:"symbol"`
-			Site   string `json:"site"`
+			Site   string `json:"site,omitempty"`
 		}{
 			Name:   c.Name,
 			Symbol: c.Symbol,
