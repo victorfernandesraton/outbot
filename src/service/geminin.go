@@ -43,7 +43,7 @@ func (service *GemininService) GetCurrencyInfo(symbol string) (*entity.Price, er
 		fmt.Println(readErr)
 		return nil, readErr
 	}
-	errParse := json.Unmarshal(body, resDataArray)
+	errParse := json.Unmarshal(body, &resDataArray)
 	if readErr != nil {
 		fmt.Println(errParse)
 		return nil, errParse
