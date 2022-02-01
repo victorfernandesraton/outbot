@@ -17,7 +17,7 @@ func main() {
 	}
 
 	for _, v := range services {
-		v.GetCryptoInfo("ETH")
+		v.GetCurrencyInfo("BTC")
 	}
 
 }
