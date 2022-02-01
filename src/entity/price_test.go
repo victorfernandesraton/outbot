@@ -20,7 +20,7 @@ func TestValidParser(t *testing.T) {
 		Site: "www.eth.com",
 	}
 	data := &entity.Price{
-		Crypto:     *crypto,
+		Crypto:     crypto,
 		Evaluation: 20,
 		Date: sql.NullTime{
 			Time:  time.Date(2020, 4, 10, 0, 0, 0, 0, time.UTC),

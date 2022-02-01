@@ -9,7 +9,7 @@ import (
 )
 
 type Price struct {
-	Crypto     Crypto
+	Crypto     *Crypto
 	Evaluation float64
 	Date       sql.NullTime
 }
@@ -22,7 +22,7 @@ func (p *Price) MarshalJSON() ([]byte, error) {
 			Evaluation float64   `json:"evaluation"`
 			Date       time.Time `json:"date"`
 		}{
-			Crypto:     p.Crypto,
+			Crypto:     *p.Crypto,
 			Evaluation: p.Evaluation,
 			Date:       p.Date.Time,
 		}
@@ -31,7 +31,7 @@ func (p *Price) MarshalJSON() ([]byte, error) {
 			Crypto     Crypto  `json:"crypto"`
 			Evaluation float64 `json:"evaluation"`
 		}{
-			Crypto:     p.Crypto,
+			Crypto:     *p.Crypto,
 			Evaluation: p.Evaluation,
 		}
 	}
