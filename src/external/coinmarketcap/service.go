@@ -34,7 +34,7 @@ func (s *Service) GetCryptoInfo(symbol string) ([]*entity.Crypto, error) {
 	res, errHandleRequest := http.DefaultClient.Do(req)
 
 	if errHandleRequest != nil {
-		return nil, errors.New("Error on send request")
+		return nil, errors.New("error on send request")
 	}
 
 	defer res.Body.Close()
@@ -42,12 +42,12 @@ func (s *Service) GetCryptoInfo(symbol string) ([]*entity.Crypto, error) {
 	body, errBuildResponse := ioutil.ReadAll(res.Body)
 
 	if errBuildResponse != nil {
-		return nil, errors.New("Error on build buff")
+		return nil, errors.New("error on build buff")
 	}
 
 	errParseResponse := json.Unmarshal(body, &response)
 	if errParseResponse != nil {
-		return nil, errors.New("Error on parse response data")
+		return nil, errors.New("error on parse response data")
 	}
 
 	for _, v := range response.Coin {
