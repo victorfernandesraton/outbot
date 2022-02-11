@@ -1,7 +1,8 @@
+//+build e2e
+
 package coinmarketcap_test
 
 import (
-	"fmt"
 	"testing"
 
 	"github.comvictorfernandesraton/outbot/src/entity"
@@ -24,7 +25,6 @@ func TestWithGetValue(t *testing.T) {
 	}
 	for _, v := range res {
 		if v.Symbol == "ETH" {
-			fmt.Println(v.Name)
 			data = v
 		}
 	}

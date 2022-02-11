@@ -3,7 +3,6 @@ package entity
 import (
 	"database/sql"
 	"encoding/json"
-	"errors"
 	"fmt"
 	"time"
 )
@@ -42,7 +41,7 @@ func (c *Crypto) MarshalJSON() ([]byte, error) {
 	}
 	data, err := json.Marshal(dataStr)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("JSON Error parse, %v", err.Error()))
+		return nil, fmt.Errorf("JSON Error parse, %v", err.Error())
 	}
 	return data, nil
 

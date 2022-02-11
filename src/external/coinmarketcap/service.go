@@ -26,7 +26,7 @@ func (s *Service) GetCryptoInfo(symbol string) ([]*entity.Crypto, error) {
 	req, errBuildRequest := http.NewRequest("GET", url, nil)
 
 	if errBuildRequest != nil {
-		return nil, errors.New("Error on build request")
+		return nil, errors.New("error on build request")
 	}
 
 	req.Header.Add("X-CMC_PRO_API_KEY", s.Key)

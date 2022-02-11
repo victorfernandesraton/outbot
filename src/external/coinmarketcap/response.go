@@ -7,8 +7,8 @@ type ResponseJSON struct {
 type CryptoInfo struct {
 	Category                      string        `json:"category"`
 	ContractAddress               []interface{} `json:"contract_address"`
-	DateAdded                     string        `json:"date_added, omitempty"`
-	DateLaunched                  string        `json:"date_launched, omitempty"`
+	DateAdded                     string        `json:"date_added"`
+	DateLaunched                  string        `json:"date_launched"`
 	Description                   string        `json:"description"`
 	ID                            int64         `json:"id"`
 	IsHidden                      int64         `json:"is_hidden"`

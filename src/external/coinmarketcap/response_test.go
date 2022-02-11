@@ -1,3 +1,5 @@
+// +build unit
+
 package coinmarketcap_test
 
 import (
@@ -20,5 +22,4 @@ func TestJsonUnarshallResponse(t *testing.T) {
 	if res.Coin["BTC"].Symbol != "BTC" {
 		t.Error("Invalid data")
 	}
-
 }
