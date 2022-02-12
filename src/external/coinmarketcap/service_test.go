@@ -3,17 +3,29 @@
 package coinmarketcap_test
 
 import (
+	"os"
+	"path/filepath"
 	"testing"
 
+	"github.com/joho/godotenv"
+	_ "github.com/joho/godotenv"
+	"github.comvictorfernandesraton/outbot/src/config"
 	"github.comvictorfernandesraton/outbot/src/entity"
 	"github.comvictorfernandesraton/outbot/src/external/coinmarketcap"
 )
 
+func init() {
+	// Root folder of this project
+	if err := godotenv.Load(filepath.Join(config.ProjectRootPath, ".env")); err != nil {
+		panic(err.Error())
+	}
+}
+
 func TestWithGetValue(t *testing.T) {
 	var data *entity.Crypto
 	service := coinmarketcap.Service{
-		Domain: "https://pro-api.coinmarketcap.com/v1",
-		Key:    "0e3ce94d-7ef6-44da-83d5-dba193390990",
+		Domain: os.Getenv("COINMARKETCAP_DOMAIN"),
+		Key:    os.Getenv("COINMARKETCAP_KEY"),
 	}
 
 	res, err := service.GetCryptoInfo("ETH")
